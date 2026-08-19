@@ -27,8 +27,8 @@ jb-furniture-interior/
 │
 ├── index.html              # Home page
 ├── services.html           # In-depth Services page (6 core offerings)
-├── about.html              # Story, Philosophy (3 Pillars), Founder (Abdullah), Service Area
-├── contact.html            # Contact info, consultation form & WhatsApp generator
+├── about.html              # Story, Philosophy (3 Pillars), Design Leadership, Service Area
+├── contact.html            # Contact info, consultation form & location map
 │
 ├── css/
 │   └── style.css           # Design tokens, responsive utilities, luxury styling
@@ -55,25 +55,11 @@ jb-furniture-interior/
 
 ## ⚙️ Client Customization & Configuration
 
-### 1. WhatsApp Number & Message
-In `js/script.js`, edit the `CONFIG` object:
-```javascript
-const CONFIG = {
-  whatsappNumber: "919876543210", // Set client WhatsApp number (country code + number)
-  instagramHandle: "jb_furniture_interior_pune",
-  instagramUrl: "https://www.instagram.com/jb_furniture_interior_pune/",
-  defaultWhatsAppMsg: "Hello JB Furniture & Interior, I would like to discuss a furniture/interior project in Pune."
-};
-```
+### 1. Google Maps Embed
+In `contact.html`, update the `<iframe>` `src` attribute in `#location-map` with the client's verified Google Maps embed URL if needed.
 
-### 2. Updating Contact Placeholders
-Search and update the following placeholders in `index.html`, `services.html`, `about.html`, and `contact.html` once confirmed with the client:
-- `[PHONE NUMBER]`
-- `[WHATSAPP NUMBER]`
-- `[EMAIL ADDRESS]`
-
-### 3. Google Maps Embed
-In `contact.html`, update the `<iframe>` `src` attribute in `#location-map` with the client's verified Google Maps embed URL.
+### 2. Consultation Form Submissions
+Form handling logic can be found in `js/script.js` under section `8. CONTACT FORM VALIDATION & SUBMISSION`. Connect your preferred email endpoint or CRM backend API here.
 
 ---
 

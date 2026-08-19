@@ -8,14 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // ==========================================
-  // 1. CONFIGURABLE CLIENT CONSTANTS
+  // 1. CONFIGURATION & CONSTANTS
   // ==========================================
-  // Note: Replace with actual client phone/whatsapp number when confirmed
   const CONFIG = {
-    whatsappNumber: "919876543210", // Client can configure this with their WhatsApp number without + or spaces
-    instagramHandle: "jb_furniture_interior_pune",
-    instagramUrl: "https://www.instagram.com/jb_furniture_interior_pune/",
-    defaultWhatsAppMsg: "Hello JB Furniture & Interior, I would like to discuss a furniture/interior project in Pune."
+    studioCity: "Pune",
+    state: "Maharashtra"
   };
 
   // ==========================================
@@ -208,23 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 8. WHATSAPP LINK GENERATOR
-  // ==========================================
-  const generateWhatsAppUrl = (customText) => {
-    const text = customText || CONFIG.defaultWhatsAppMsg;
-    return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
-  };
-
-  // Attach dynamic link to all WhatsApp buttons
-  const waButtons = document.querySelectorAll('.dynamic-whatsapp-btn');
-  waButtons.forEach(btn => {
-    btn.setAttribute('href', generateWhatsAppUrl());
-    btn.setAttribute('target', '_blank');
-    btn.setAttribute('rel', 'noopener noreferrer');
-  });
-
-  // ==========================================
-  // 9. CONTACT FORM VALIDATION & SUBMISSION
+  // 8. CONTACT FORM VALIDATION & SUBMISSION
   // ==========================================
   const contactForm = document.getElementById('project-contact-form');
   const formSuccessBanner = document.getElementById('form-success-banner');
@@ -297,26 +278,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (isValid) {
-        // Construct formatted WhatsApp message for easy direct inquiry
-        const inquirySummary = 
-          `*New Project Inquiry - JB Furniture & Interior*\n` +
-          `• Name: ${nameInput.value.trim()}\n` +
-          `• Phone: ${phoneInput.value.trim()}\n` +
-          `• Email: ${emailInput?.value.trim() || 'Not specified'}\n` +
-          `• Project Type: ${projectTypeSelect.value}\n` +
-          `• Location: ${locationInput?.value.trim() || 'Pune'}\n` +
-          `• Budget: ${budgetSelect?.value || 'Discuss during consultation'}\n` +
-          `• Requirements: ${messageInput.value.trim()}`;
-
         // Show inline success message
         if (formSuccessBanner) {
           formSuccessBanner.classList.add('active');
           formSuccessBanner.innerHTML = `
-            <h4 style="color: #25D366; margin-bottom: 8px;">Thank You, ${nameInput.value.trim()}!</h4>
-            <p style="margin-bottom: 12px;">Your consultation request has been prepared. You can also send this inquiry directly to our team on WhatsApp for an immediate response.</p>
-            <a href="${generateWhatsAppUrl(inquirySummary)}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="display:inline-flex;">
-              Send Inquiry via WhatsApp
-            </a>
+            <h4 style="color: var(--accent-gold); margin-bottom: 8px;">Thank You, ${nameInput.value.trim()}!</h4>
+            <p style="margin-bottom: 0;">Your consultation request has been submitted successfully. Our design team will review your requirements and reach out to you shortly.</p>
           `;
         }
 
